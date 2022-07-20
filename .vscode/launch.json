@@ -24,13 +24,6 @@
                 "XDEBUG_MODE": "debug,develop",
                 "XDEBUG_CONFIG": "client_port=${port}"
             }
-        },
-        {
-            "name": "Run tests",
-            "type": "php",
-            "request": "launch",
-            "program": "test.php",
-            "cwd": "${workspaceFolder}"
         }
     ]
 }

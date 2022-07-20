@@ -19,8 +19,7 @@ class MergeSorter extends BaseSorter {
         [ $first_count, $second_count ] = [ sizeof($first), sizeof($second) ];
         $this->sort($first);
         $this->sort($second);
-        for ($i = 0; $i < $count; ++$i) {
-            $first_index = $second_index = 0;
+        for ($i = $first_index = $second_index = 0; $i < $count; ++$i) {
             [ $can_take_first, $can_take_second ] = [ $first_index < $first_count, $second_index < $second_count ];
             if ($can_take_first and (!$can_take_second || $first[$first_index] <= $second[$second_index])) {
                 $nums[$i] = $first[$first_index];
@@ -33,7 +32,7 @@ class MergeSorter extends BaseSorter {
                 if ($second_index < $second_count) {
                     ++$second_index;
                 }
-            }              
+            }
         }
     }
 }

@@ -132,7 +132,7 @@ class Heap {
         // arbitrary but requires no extra processing time other than
         // what it takes to let it settle into its new position
         $taken = $this->storage[self::ROOT_INDEX];
-        $this->storage[self::ROOT_INDEX] = $this->storage[--$this->size];
+        $this->storage[self::ROOT_INDEX] = $this->storage[$this->size--];
         if ($this->size > 1) {
             (new HeapNode($this, self::ROOT_INDEX))->heapifyDown();
         }
