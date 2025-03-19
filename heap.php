@@ -1,9 +1,9 @@
 <?php
 require_once('./common.php');
 
-abstract class HeapifyDirection {
-    const DOWN = 0;
-    const UP = 1;
+enum HeapifyDirection {
+    case DOWN;
+    case UP;
 }
 
 class EmptyHeapError extends Exception {}
@@ -11,9 +11,9 @@ class EmptyHeapError extends Exception {}
 class HeapCapacityTooSmallError extends Exception {}
 
 class HeapNode {
-    private Heap $heap;
-    private int $index;
-    private bool $is_root;
+    private readonly Heap $heap;
+    private readonly int $index;
+    private readonly bool $is_root;
     public function __construct(Heap $heap, int $index) {
         $this->heap = $heap;
         $this->index = $index;
@@ -72,7 +72,7 @@ class HeapNode {
             : new HeapNode($this->heap, floor($this->index / 2));
     }
 
-    private function trySwapValueWith(?HeapNode $other, int $direction) : void {
+    private function trySwapValueWith(?HeapNode $other, HeapifyDirection $direction) : void {
         if ($other == null) {
             return;
         }        
@@ -92,7 +92,7 @@ class HeapNode {
 
 class Heap {
     public const ROOT_INDEX = 1;
-    private bool $is_min;
+    private readonly bool $is_min;
     public array $storage;
     private int $size;
     public function __construct(bool $is_min=true, int $capacity=30) {

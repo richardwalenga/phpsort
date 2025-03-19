@@ -7,7 +7,7 @@ function swapValuesIn(array &$ary, int $x, int $y): void {
 }
 
 abstract class BaseSorter {
-    private string $name;
+    private readonly string $name;
     public function __construct(string $name) {
         $this->name = $name;
     }

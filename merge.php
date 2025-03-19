@@ -2,7 +2,7 @@
 require_once('./common.php');
 
 class MergeSorter extends BaseSorter {
-    private BaseSorter $small_array_sorter;
+    private readonly BaseSorter $small_array_sorter;
     public function __construct(BaseSorter $small_array_sorter) {
         parent::__construct("Merge");
         $this->small_array_sorter = $small_array_sorter;
